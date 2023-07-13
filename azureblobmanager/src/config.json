@@ -1,0 +1,12 @@
+{
+  "database": {
+    "url": "local host",
+    "database": "SQL"
+  },
+  "azure_storage_account": {
+    "account_url": "https://pythondipstorage.blob.core.windows.net/dip?sp=racwdli&st=2023-07-13T14:33:22Z&se=2023-07-13T22:33:22Z&spr=https&sv=2022-11-02&sr=c&sig=L3CVZ1esM8PlXEuQqS28A0xcb9CcTw2LsjrJyjrCKMw%3D",
+    "token": "sp=racwdli&st=2023-07-13T14:33:22Z&se=2023-07-13T22:33:22Z&spr=https&sv=2022-11-02&sr=c&sig=L3CVZ1esM8PlXEuQqS28A0xcb9CcTw2LsjrJyjrCKMw%3D",
+    "maxfilesize": 1048576
+  },
+  "port": 5768
+}

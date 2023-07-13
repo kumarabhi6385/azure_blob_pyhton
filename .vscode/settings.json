@@ -1,0 +1,13 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none",
+  "python.defaultInterpreterPath": "PATH_TO_VENV_INTERPRETER",
+  "python.terminal.activateEnvironment": true,
+  "python.analysis.extraPaths": [
+    "azureblobmanager/src",
+    "azureblobmanager/src/blob_service",
+    "azureblobmanager/src/blob_helper"
+  ]
+}
