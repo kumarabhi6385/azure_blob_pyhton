@@ -13,8 +13,8 @@ from blobrouter import router as blob_router
 
 app = FastAPI()
 
-app.include_router(blob_router)
-
 @app.get("/")
 async def get_root():
     return "Welcome to File service built on Fast API"
+
+app.include_router(blob_router)

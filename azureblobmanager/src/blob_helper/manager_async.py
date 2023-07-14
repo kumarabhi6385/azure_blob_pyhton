@@ -125,6 +125,24 @@ class AzureBlobManager_async():
             logging.exception('Upload file error')
             logging.exception(err)
 
+    # Below function will be be used to upload file using file object
+    async def uploadFile(self, file):
+        try:
+            container = ContainerClient.from_container_url(
+                container_url=self.account_url,
+                credential=self.sastoken,
+            )
+            blobname = str(uuid.uuid4())
+            extension = ".pdf"
+            name = blobname + extension
+            await container.upload_blob(name=name, data=file, overwrite=True)
+        except Exception as err:
+            logging.exception(f"Exception details  - {err}")
+            raise Exception(err)
+        finally:
+            await container.close()
+
+
     # Below function will be be used to download blob
     async def download_blob(self, blobname:str):
         try:

@@ -85,7 +85,7 @@ async def delete_blobs_all():
 async def delete_blob(blob_name: str):
     try:
         blobmanager = AzureBlobManager_async(appConfig.account_url, appConfig.sastoken)
-        await blobmanager.delete_blob_async(blob_name)
+        await blobmanager.delete_blob(blob_name)
         return {"message": "Blob is deleted"}
     except Exception as err:
         logging.exception(f"Exception details  - {err}")
@@ -100,7 +100,7 @@ async def delete_blob(blob_name: str):
 async def upload_file(file: UploadFile = File(...)):
     try:
         blobmanager = AzureBlobManager_async(appConfig.account_url, appConfig.sastoken)
-        await blobmanager.uploadFileData_async(file) 
+        await blobmanager.uploadFile(file) 
         return {"filename": file.filename, "message": "File is uploaded"}
     except Exception as err:
         logging.exception(f"Exception details  - {err}")
