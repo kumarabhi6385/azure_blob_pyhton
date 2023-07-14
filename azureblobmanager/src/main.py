@@ -10,18 +10,21 @@
 import argparse
 import subprocess
 import logging
+import os
+import json
 
 #logging.basicConfig(level=logging.DEBUG, filename="output.log")
 logging.basicConfig(level=logging.DEBUG)
 
-from config import Configuration
-
-config = Configuration()
+def getPort():
+    with open("config.json") as file:
+        data = json.load(file)
+        return data["port"]
 
 def run_uvicorn():
-    uvicorn_command = f"uvicorn blob_service.root:app --host localhost --port {config.port}"
-    print(uvicorn_command)
-    #uvicorn_command = "uvicorn blob_service.root:app"
+    port = getPort()
+    os.chdir(f"blob_service")
+    uvicorn_command = f"uvicorn root:app --host localhost --port {port}"
     subprocess.run(uvicorn_command, shell=True)
 
 def run_console():

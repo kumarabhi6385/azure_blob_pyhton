@@ -1,3 +1,5 @@
+#################### import section ################################################
+
 import sys
 from pathlib import Path
 HERE = Path(__file__).parent
@@ -11,6 +13,8 @@ import asyncio
 from config import Configuration
 from blob_helper.manager_async import AzureBlobManager_async
 
+#################### import section ################################################
+
 appConfig = Configuration()
 
 async def getListOfBlobsAsync():
@@ -22,6 +26,17 @@ async def getListOfBlobsAsync():
         raise Exception(err)
     finally:
         return data
+    
+async def uploadBlockAsync(filePath: str, blobpath:str):
+    try:
+        logging.debug("Inside uploadBlockAsync method")
+        blobmanager = AzureBlobManager_async(appConfig.account_url, appConfig.sastoken)
+        await blobmanager.upload_file_in_chunks(filePath, blobpath)
+    except Exception as err:
+        logging.exception(f"Exception details  - {err}")
+        raise Exception(err)
+    finally:
+        logging.debug("Outside uploadBlockAsync method")
  
 
 async def main():
