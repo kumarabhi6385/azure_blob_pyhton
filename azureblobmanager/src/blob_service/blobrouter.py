@@ -60,7 +60,7 @@ async def get_blob_info(blob_name: str):
 async def get_blob_blocks(blob_name: str):
     try:
         blobmanager = AzureBlobManager_async(appConfig.account_url, appConfig.sastoken)
-        blocks = await blobmanager.get_blob_block_async(blob_name)
+        blocks = await blobmanager.get_blob_blocks(blob_name)
         return blocks
     except Exception as err:
         logging.exception(f"Exception details  - {err}")
